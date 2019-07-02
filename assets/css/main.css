@@ -123,7 +123,7 @@ input, select, textarea {
 		}
 
 	strong, b {
-		color: #777;
+		color: #7f5cc5;
 		font-weight: 700;
 	}
 
@@ -2679,7 +2679,7 @@ input, select, textarea {
 
 		.features article .inner {
 			display: inline-block;
-			vertical-align: middle;
+			vertical-align: top;
 			width: 50%;
 		}
 
@@ -2810,7 +2810,7 @@ input, select, textarea {
 
 						#header > nav ul li a.active {
 							background: #fff;
-							color: #4acaa8 !important;
+							color: #000000 !important;
 						}
 
 					#header > nav ul li:first-child {
@@ -2842,7 +2842,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		background: #fafafa;
+		background: #6c93cc;
 		border-top: 0;
 		color: #c0c0c0;
 		overflow: hidden;
