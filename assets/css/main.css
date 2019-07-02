@@ -2725,10 +2725,6 @@ input, select, textarea {
 			color: #b7eadc;
 		}
 
-		#header a {
-			color: #d2f2e9;
-		}
-
 			#header a:hover {
 				color: #ffffff !important;
 			}
@@ -2773,7 +2769,7 @@ input, select, textarea {
 				margin: 0;
 			}
 
-				#header > footer .icons li a {
+				.icons li a {
 					color: #FFFFFF;
 				}
 
