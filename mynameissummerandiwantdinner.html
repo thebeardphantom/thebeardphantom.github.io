@@ -7,7 +7,7 @@
             function reloadWheelFromOptions()
             {
                 document.body.childNodes[1].innerHTML = ""
-                var optionsString = document.querySelector("#options").innerHTML
+                var optionsString = document.querySelector("#options").innerHTML.trim()
                 var url = makeURL(optionsString.split('\n'))
                 createFrame(url)
             }
@@ -33,7 +33,7 @@
                 document.body.childNodes[1].innerHTML = element
             }
             
-            fetch(url).then(r =>r.text()).then(t => document.querySelector("#options").innerHTML = t).then(reloadWheelFromOptions)
+            fetch(url).then(r =>r.text()).then(t => document.querySelector("#options").innerHTML = t.trim()).then(reloadWheelFromOptions)
         </script>
     </head>
     
