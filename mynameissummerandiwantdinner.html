@@ -29,18 +29,24 @@
             function createFrame(finalURL)
             {
                 const element = `<iframe src="${finalURL}" width="750" height="750" scrolling="no" frameborder="0"></iframe>`
-                document.body.childNodes[1].innerHTML = element
+                document.querySelector("#wheel-container").innerHTML = element
             }
             
             fetch(url).then(r =>r.text()).then(t => document.querySelector("#options").value = t.trim()).then(reloadWheelFromOptions)
         </script>
+		<style>
+			button {
+			    height: 30px;
+			}
+		</style>
     </head>
     
     <body style="background-color: #96c5e0; flex-direction: row; display: flex;">
-        <div style="display: flex; margin: 0; align-items: center; width: 100%; height: 100%; justify-content: center;">
+        <div id="wheel-container" style="display: flex; margin: 0; align-items: center; width: 100%; height: 100%; justify-content: center;">
         </div>
-        <div style="display: flex; flex-direction: column; width:30%;">
-            <button onclick="reloadWheelFromOptions()">Reload</button>
+        <div style="display: flex; flex-direction: column; width:40%; height: 100%;">
+			<button onclick="loadDefaults()">Load Default Options</button>
+            <button onclick="reloadWheelFromOptions()">Make Wheel</button>
             <textarea id="options" style="height: 100%; display: flex;"></textarea>
         </div>
     </body>
