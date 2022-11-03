@@ -7,7 +7,7 @@
             function reloadWheelFromOptions()
             {
                 document.body.childNodes[1].innerHTML = ""
-                var optionsString = document.querySelector("#options").innerText
+                var optionsString = document.querySelector("#options").innerHTML
                 var url = makeURL(optionsString.split('\n'))
                 createFrame(url)
             }
