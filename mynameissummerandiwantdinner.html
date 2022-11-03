@@ -37,7 +37,10 @@
                 document.querySelector("#wheel-container").innerHTML = element
             }
             
-            reloadDefaultOptions().then(reloadWheelFromOptions)
+            window.addEventListener('load', (event) =>
+            { 
+                reloadDefaultOptions().then(reloadWheelFromOptions)
+            });
         </script>
         <style>
             body, html {
