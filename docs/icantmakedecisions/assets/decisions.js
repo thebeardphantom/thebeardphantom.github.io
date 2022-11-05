@@ -1,10 +1,11 @@
-const url = "assets/dinner_options.txt"
-const size = 650;
+const size = 650
 
 async function reloadDefaultOptions() {
-    const r = await fetch(url);
-    const t = await r.text();
-    return document.querySelector("#options").value = t.trim();
+    const set = document.querySelector("#default-set")
+    const url = `assets/default_options_${set.value}.txt`
+    const r = await fetch(url)
+    const t = await r.text()
+    return document.querySelector("#options").value = t.trim()
 }
 
 function reloadWheelFromOptions() {

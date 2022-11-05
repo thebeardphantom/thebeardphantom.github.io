@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/decisions.css" />
+    <script src="assets/decisions.js"></script>
+</head>
+
+<body>
+    <div class="full-screen-div">
+        <div id="side-bar">
+            <div style="display: flex;">
+                <button onclick="reloadDefaultOptions()" style="flex-grow: 1;">Load Default Options</button>
+                <select id="default-set">
+                    <option value="dinner">Dinner</option>
+                    <option value="breakfast">Breakfast</option>
+                  </select>
+            </div>
+            <button onclick="reloadWheelFromOptions()">Make Wheel</button>
+            <textarea id="options"></textarea>
+        </div>
+        <div id="wheel-container"></div>
+    </div>
+</body>
+
+</html>

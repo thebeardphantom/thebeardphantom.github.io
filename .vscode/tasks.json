@@ -3,8 +3,12 @@
     "tasks": [
         {
             "label": "jekyll",
-            "command": "${workspaceFolder}\\launch.cmd",
+            "command": "bundle exec jekyll serve",
             "type": "shell",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}\\docs"
+            },
         }
     ]
 }
