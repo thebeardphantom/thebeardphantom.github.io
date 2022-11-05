@@ -5,11 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "name": "Open in Chrome",
-            "file": "${file}",
-            "runtimeArgs": ["--allow-file-access-from-files"]
+            "runtimeArgs": [
+                "127.0.0.1:4000/${fileBasename}",
+                "--allow-file-access-from-files"
+            ],
+            "preLaunchTask": "jekyll"
         }
     ]
 }
