@@ -8,4 +8,4 @@ categories: unity
 
 Accidentally stumbled upon the benefits of wrapping `Mathf.SmoothDamp` in a struct.
 
-[https://gist.github.com/thebeardphantom/65d2d0b5dd7a969b5a3863b084a443f8](https://gist.github.com/thebeardphantom/65d2d0b5dd7a969b5a3863b084a443f8)
+<a href="https://gist.github.com/thebeardphantom/65d2d0b5dd7a969b5a3863b084a443f8" target="_blank">https://gist.github.com/thebeardphantom/65d2d0b5dd7a969b5a3863b084a443f8</a>
