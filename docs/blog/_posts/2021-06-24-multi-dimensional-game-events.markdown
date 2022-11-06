@@ -70,7 +70,7 @@ Its very easy to abuse listener setup to achieve more flexible behavior. For exa
 
 The inheritor of `IPingListener` will also need to inherit at least once from `IPingResponder<T>` in order to do anything beyond "hear" an event. This interface looks like this:
 ```csharp
-public interface IPingResponder&lt;in T&gt; where T : Ping
+public interface IPingResponder<in T> where T : Ping
 {
     void RespondToPing(T ping,
         in PingLocality locality,
