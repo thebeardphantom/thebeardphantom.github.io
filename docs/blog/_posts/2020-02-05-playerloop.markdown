@@ -24,7 +24,7 @@ The first step to understanding the PlayerLoop is to find a way of viewing what 
 PlayerLoopSystem loop = PlayerLoop.GetDefaultPlayerLoop()
 ```
 
-[PlayerLoopSystem](https://web.archive.org/web/20190127004746/https://docs.unity3d.com/2018.1/Documentation/ScriptReference/Experimental.LowLevel.PlayerLoopSystem.html) is a struct that is organized in a recursive, tree-like structure. From this object you can get some information about the system:
+[PlayerLoopSystem](https://docs.unity3d.com/ScriptReference/LowLevel.PlayerLoopSystem.html) is a struct that is organized in a recursive, tree-like structure. From this object you can get some information about the system:
 
 * **`type`**: For default systems this is a `System.Type` object that acts as a representation of what update system this is. These types are only used as identifiers, and don’t actually contain anything. For example, the type of the `PlayerLoopSystem` responsible for updating AI is `UnityEngine.Experimental.PlayerLoop.AIUpdate`. We’ll use this field later to search for built-in types from the default player loop. This field is mostly useless for custom systems, except for its use as a label for the system in the Profiler.
 * **`subSystemList`**: As previously stated, `PlayerLoopSystem` is a recursive structure, so this is an array of all of the `PlayerLoopSystems` underneath this system. Traversing this array recursively will let us inspect the default loop.
