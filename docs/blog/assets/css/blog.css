@@ -14,37 +14,6 @@
     padding-right: 10px;
 }
 
-.image img {
-    border-radius: 5px;
-    display: block;
-}
-
-.image.main {
-    display: block;
-    height: 20em;
-    border-radius: 0;
-}
-
-.image {
-    border-radius: 5px;
-    border: 0;
-    display: inline-block;
-    position: relative;
-}
-
-.image[data-position] img {
-    -moz-object-fit: cover;
-    -webkit-object-fit: cover;
-    -ms-object-fit: cover;
-    object-fit: cover;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 .post:not(pre) {
     background-color: #FFFFFF33;
     padding-left: 12px;
@@ -53,4 +22,12 @@
     padding-bottom: 6px;
     text-align: justify;
     font-family: sans-serif;
+}
+
+.post-content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 25%;
+    max-width: 100%;
 }
