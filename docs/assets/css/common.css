@@ -1,0 +1,49 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+* {
+    font-family: '/assets/fonts/JetBrainsMono-Regular';
+}
+
+body {
+    background-color: #99b9e8;
+}
+
+.nav-bar {
+    background-color: #d4bdff;
+}
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+}
+
+header.major h2+p {
+    color: #764ec3;
+}
+
+strong,
+b {
+    color: #7f5cc5;
+    font-weight: 700;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+    color: #4acaa8 !important;
+}
+
+a {
+    -moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    border-bottom: solid 1px #e4e4e4;
+    color: inherit;
+    text-decoration: none;
+}

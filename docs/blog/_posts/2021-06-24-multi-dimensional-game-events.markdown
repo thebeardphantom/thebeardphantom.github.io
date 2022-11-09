@@ -1,12 +1,11 @@
 ---
 layout: post
 title:  "Multi-Dimensional Game Events"
-date:   2021-06-24 12:00:00 -0700
-categories: unity
+tags: programming C# system-architecture
 ---
 I'm currently working on a prototype for a project and needed a super flexible and reusable event system. I took some inspiration from Far Cry's dynamic, emergent systems and made this... thing (GIF at 1/4 speed):
 
-![](/blog/assets/tumblr_99e1a526e6b016f9f6b41252781046f1_2e0cca97_540.gif)
+![](/blog/assets/images/tumblr_99e1a526e6b016f9f6b41252781046f1_2e0cca97_540.gif)
 
 I also took a lot of inspiration from this wonderful GMTK video:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SnpAAX9CkIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -54,7 +53,7 @@ Yep, just like pings, listeners are also positional and radial in nature. This m
 
 Where _L_ is listener, _P_ is ping, _p_ is position and _r_ is radius:
 
-![](/blog/assets/tumblr_7d2d9a3c93ee800bd11ca7db864f7048_b8504079_540.png)
+![](/blog/assets/images/tumblr_7d2d9a3c93ee800bd11ca7db864f7048_b8504079_540.png)
 
 This is a very important distinction between pings and other event systems. In a typical [Observer-pattern-like](https://en.wikipedia.org/wiki/Observer_pattern) event system, each handler registers itself to specific instances of events. It will always receive a callback for those instances of those events as long as it remains registered.
 
@@ -91,7 +90,8 @@ As a reminder, the primary reason why listening and responding are treated as se
 ## Wrap Up
 
 Everything above can be summarized into this potentially overwhelming flow chart:
-![](/blog/assets/tumblr_b0601c68a1c2ee05f0593110e7d31da8_954a6d57_540.png)
+
+![](/blog/assets/images/tumblr_b0601c68a1c2ee05f0593110e7d31da8_954a6d57_540.png)
 
 That's about it! There's some other details not really worth mentioning, such as using object pooling for `Ping` subclass instances, or potential future optimizations on listener discovery (i.e. using an octree). I also plan on writing a "history visualizer" to show historical ping information. This is important due to how transitory these pings can get.
 
