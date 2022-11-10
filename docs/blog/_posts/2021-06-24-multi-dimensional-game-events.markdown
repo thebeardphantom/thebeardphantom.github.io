@@ -8,7 +8,7 @@ I'm currently working on a prototype for a project and needed a super flexible a
 ![](/blog/assets/images/tumblr_99e1a526e6b016f9f6b41252781046f1_2e0cca97_540.gif)
 
 I also took a lot of inspiration from this wonderful GMTK video:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SnpAAX9CkIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% youtube "https://www.youtube.com/embed/SnpAAX9CkIc" %}
 
 ## Breakdown
 So what the heck is happening here?
