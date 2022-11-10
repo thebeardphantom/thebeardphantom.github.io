@@ -108,4 +108,8 @@ The rest of the grave mesh is designed to cover any gaps formed by the restricti
 
 This is a fairly basic implementation and most likely won't scale well or handle every case. For example, if we have many instances of this component it'd almost certainly be better to rearchitect this such that there is a single `TerrainHoleCarver` component that queries for all `TerrainHole` components, asks for their world bounds, and handles all of the hole carving in one spot. Also, if the bounds are rotated at a 45­° angle, the world bounds can get quite a bit larger than the actual collider size. This results in a much larger hole than the collider itself represents.
 
+<<<<<<< HEAD
 In a future post I'll go over how we can "march through" the collider in the hole texture's pixel space to get a better representation of arbitrary collider shapes.
+=======
+In a future post I'll go over how we can "march through" the collider in the hole texture's pixel space to get a better representation of arbitrary collider shapes.
+>>>>>>> 6dfe0b7 (New post)
