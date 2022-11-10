@@ -3,7 +3,6 @@ layout: post
 title:  "2D Tint Masking in Unity"
 tags: unity programming C# graphics
 ---
-## A mini guide to easy 2D tint masking in Unity!
 First, make a single-channel texture to use as your mask:
 
 ![](/blog/assets/images/tumblr_1426a7931d35547cb846362d008a1fc6_93adf90d_540.png)
