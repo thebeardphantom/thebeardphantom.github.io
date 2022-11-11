@@ -12,10 +12,10 @@ layout: default
 
 <div style="font-family: monospace;">
     <h1>Posts</h1>
-    <table style="width:100%; font-size: 18px;">
+    <table style="width:100%;">
         <colgroup>
-            <col style="text-align:left; width:5%;">
-            <col style="text-align:left; width:5%;">
+            <col style="text-align:left; width:10%;">
+            <col style="text-align:left; width:20%;">
             <col style="text-align:left">
         </colgroup>
         {% assign sorted = site.posts | sort: 'date' | reverse %}

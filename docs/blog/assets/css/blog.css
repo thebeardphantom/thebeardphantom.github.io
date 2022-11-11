@@ -6,25 +6,31 @@
     font-family: revert;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 451px) {
     .side-bar {
         font-size: 8px;
         min-width: 15%;
     }
+    #content {
+        font-size: 10px;
+    }
 }
 
 
-@media screen and (min-width: 426px) and (max-width: 768px) {
+@media screen and (min-width: 452px) and (max-width: 749px) {
     .side-bar {
-        font-size: 11px;
+        font-size: 10px;
         min-width: 20%;
     }
     .post:not(pre) {
         text-align: justify;
     }
+    #content {
+        font-size: 12px;
+    }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 750px) {
     .side-bar {
         font-size: 12px;
         min-width: 20%;
@@ -32,10 +38,13 @@
     .post:not(pre) {
         text-align: justify;
     }
+    #content {
+        font-size: 14px;
+    }
 }
 
 ul {
-    padding-inline-start: 15px;
+    padding-inline-start: 10px;
 }
 
 body {
