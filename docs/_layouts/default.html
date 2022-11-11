@@ -9,31 +9,28 @@
 </head>
 
 <body>
-    <div>
-        <div id="header">
-            <a href="/">
-                <img id="logo" src="/assets/images/logo.jpg" alt="" />
-            </a>
-            <a style="display:flex; max-width: 50%;" href="/blog">
-                <img id="blog-logo" src="/blog/assets/images/blog_banner_trim.png" alt="" />
-            </a>
-        </div>
-        <div style="display: flex;">
-            <div class="side-bar"></div>
-            <div id="content">
-                {{ content }}
-            </div>
-            <div class="nav-bar side-bar">
-                <h1>Tags</h1>
-                {% for tag in site.tags %}
-                <h3>{{ tag[0] }}</h3>
-                <ul>
-                    {% for post in tag[1] %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ul>
+    <div id="header">
+        <a href="/">
+            <img id="logo" src="/assets/images/logo.jpg" alt="" />
+        </a>
+        <a style="display:flex; max-width: 50%;" href="/blog">
+            <img id="blog-logo" src="/blog/assets/images/blog_banner_trim.png" alt="" />
+        </a>
+    </div>
+    <div style="display: flex; flex-grow: 1;">
+        <div class="nav-bar side-bar">
+            <h1>Tags</h1>
+            {% for tag in site.tags %}
+            <h3>{{ tag[0] }}</h3>
+            <ul>
+                {% for post in tag[1] %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                 {% endfor %}
-            </div>
+            </ul>
+            {% endfor %}
+        </div>
+        <div id="content">
+            {{ content }}
         </div>
     </div>
 </body>
