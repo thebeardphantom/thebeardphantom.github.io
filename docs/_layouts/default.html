@@ -9,18 +9,18 @@
 </head>
 
 <body>
-    <div style="display: flex; flex-direction: column; height: 100%">
-        <div style="height: 120px; background-color: #99e8c8; padding: 5px; display: flex; justify-content: center;">
+    <div>
+        <div id="header">
             <a href="/">
-                <img style="position: absolute; max-height: 120px; left: 5px;" src="/assets/images/logo.jpg" alt="" />
+                <img id="logo" src="/assets/images/logo.jpg" alt="" />
             </a>
-            <a href="/blog">
-                <img style="max-height: 100%;" src="/blog/assets/images/blog_banner_trim.png" alt="" />
+            <a style="display:flex; max-width: 50%;" href="/blog">
+                <img id="blog-logo" src="/blog/assets/images/blog_banner_trim.png" alt="" />
             </a>
         </div>
-        <div style="display: flex; flex-grow: 1;">
+        <div style="display: flex;">
             <div class="side-bar"></div>
-            <div id="content" style="flex-grow: 1;">
+            <div id="content">
                 {{ content }}
             </div>
             <div class="nav-bar side-bar">

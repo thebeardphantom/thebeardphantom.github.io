@@ -7,13 +7,10 @@
 }
 
 .side-bar {
-    min-width: 20%;
-    font-family: monospace !important;
-}
-
-.nav-bar {
+    min-width: 15%;
     padding-left: 10px;
     padding-right: 10px;
+    font-family: monospace !important;
 }
 
 .post:not(pre) {
@@ -39,4 +36,29 @@
     padding-bottom: 1px;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+#logo {
+    position: absolute;
+    max-height: 120px;
+    left: 5px;
+}
+
+#header {
+    height: 120px;
+    background-color: #99e8c8;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#blog-logo {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+#content {
+    max-width: 85%;
+    min-width: 0%;
 }
