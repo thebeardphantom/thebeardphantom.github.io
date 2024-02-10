@@ -8,7 +8,6 @@ tags: unity programming C# graphics
 
 Using this, we can fake billboarded, 3D positioned UI.
 
-
 ![](/blog/assets/images/UI.gif)
 
 ## Cool, how do I do it?

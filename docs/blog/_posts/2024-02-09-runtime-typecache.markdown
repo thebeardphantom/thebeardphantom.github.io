@@ -1,34 +1,45 @@
 ---
 layout: post
-title:  "UI Toolkit in World Space (kind of)"
-tags: unity programming C# graphics
+title:  "Runtime TypeCache"
+tags: unity programming C#
 ---
 ## Introduction
-**UI Toolkit actually lets developers modify the screen-space position, rotation, and scale of any VisualElement.**
+**Unity supplies the <a href="https://docs.unity3d.com/ScriptReference/TypeCache.html" target="_blank">`UnityEditor.TypeCache` API</a>, which is pretty cool, but doesn't exactly help in a built player.**
 
-Using this, we can fake billboarded, 3D positioned UI.
+So how do *most* developers end up doing a "give me all methods decorated with XYZ attribute" queries outside of the editor? Well...
 
+{% gist 10cc36929bb395ce407618a85947b282 Snippet1.cs %}
 
-![](/blog/assets/images/UI.gif)
+Unfortunately, <a href="https://docs.unity3d.com/2023.3/Documentation/Manual/dotnetReflectionOverhead.html" target="_blank">this is a really big issue</a>. 
 
-## Cool, how do I do it?
+> Mono and IL2CPP internally cache all C# reflection (System.Reflection) objects and by design, Unity doesn’t garbage collect them. The result of this behavior is that the garbage collector continuously scans the cached C# reflection objects during the lifetime of your application, which causes unnecessary and potentially significant garbage collector overhead.
 
-Start by adding a `UIDocument` component to your scene, and a new script to manipulate the elements. I called mine *WorldSpaceUI*.
+This tells us that the best practice is for reflection to be used in the most minimal and specific ways possible. The ideal way to do so would be to use code generation to replace reflection, but this can really only be done on a project-by-project basis. The second best way is to have some code that scans your assemblies *at build time* and generates the most precise and specific pathways to the reflection targets as possible.
 
-The easiest way to manipulate the positions of `VisualElements` in a consistent way is to ensure that they are absolutely positioned and completely centered in the middle of the root element. So in my `Awake` method I create my elements using the following style:
+**So that's what I did, and I call it <a href="https://github.com/thebeardphantom/Runtime-TypeCache" target="_blank">Runtime TypeCache</a>.**
 
-{% gist 42a409e7179b9b087f0a5e0e848dc824 Label.cs %}
+Here's a demo for how it works:
 
-This would result in a label that is set up like so:
+{% gist 10cc36929bb395ce407618a85947b282 Snippet2.cs %}
 
-![](/blog/assets/images/Unity_uIPsS71chg.png)
+So here we have an attribute class (`SomeAttribute`) which is decorated on a class (`TestType`) and all of its properties, fields, and methods.
 
-After I create my elements I associate them with specific transforms in my scene. Now every frame we need to transform the world space position of those associated `Transforms` into screen-space and use scaling to fake perspective. The code for this is remarkably simple. First you'll want to get the center of the screen in screen-space:
+To indicate to the Runtime TypeCache system that we want to be able to efficiently query for the usual suspects at runtime, we can use the `TypeCacheTarget` attribute. By decorating the `SomeAttribute` class with `TypeCacheTarget`, the Runtime TypeCache system will bake the necessary data to query the following for `SomeAttribute`:
+- `GetFieldsWithAttribute()`
+- `GetMethodsWithAttribute()`
+- `GetTypesWithAttribute()`
+- `GetPropertiesWithAttribute()` (Yes, unlike `UnityEditor.TypeCache`, Runtime TypeCache supports properties)
 
-{% gist 42a409e7179b9b087f0a5e0e848dc824 CenterScreen.cs %}
+By decorating the `TestType` class with `TypeCacheTarget` you can call `GetTypesDerivedFrom()` for `TestType`. You can access these query functions statically via the `GlobalTypeCache` class:
 
-Then use this to calculate a delta away from the center of the screen to the associated `Transform's` world position transformed into screen-space. The scale is `one / z distance`, with some protection against a divide-by-zero. Make sure to keep the Z value of the `ITranform's` position at 0 to avoid weirdness:
+{% gist 10cc36929bb395ce407618a85947b282 Snippet3.cs %}
 
-{% gist 42a409e7179b9b087f0a5e0e848dc824 MoveToPosition.cs %}
+In the editor, `GlobalTypeCache` actually utilizes `UnityEditor.TypeCache` under the hood for everything except properties, which falls back to traditional reflection.
 
-And that's it! I believe UI Toolkit clips any pixels that aren't on the X/Y plane, so for now rotations on anything except the Z axis won't render correctly. If I find a way around this I'll write a follow-up.
+When <a href="https://docs.unity3d.com/2023.3/Documentation/ScriptReference/Build.IPostprocessBuildWithReport.html" target="_blank">making</a> a build, a `ScriptableObject`, called `SerializedTypeCache`, is quietly generated, included as a <a href="https://docs.unity3d.com/ScriptReference/PlayerSettings.GetPreloadedAssets.html" target="_blank">Preloaded Asset</a>, and then deleted <a href="https://docs.unity3d.com/2023.3/Documentation/ScriptReference/Build.IPostprocessBuildWithReport.html" target="_blank">post-build</a>. `GlobalTypeCache` then locates this preloaded object in memory at runtime, converts it into a deserialized form, and then forwards all queries to that new object.
+
+A copy of the `SerializedTypeCache`, as well as a JSON version of that copy, are generated in your project's Temp folder so you can inspect them for debugging purposes. Here's the output of a build using the code example above:
+
+{% gist 10cc36929bb395ce407618a85947b282 Snippet4.json %}
+
+You might notice that type names only exist at the end of the file. To reduce memory footprint, as well as reduce the calls to `Type.GetType(string)`, an indirection layer is used to reference `System.Types` using an index into an array. Each `System.Type` in that array is resolved exactly once, and string operations are avoided entirely.
