@@ -16,7 +16,7 @@ Unfortunately, <a href="https://docs.unity3d.com/2023.3/Documentation/Manual/dot
 
 This tells us that the best practice is for reflection to be used in the most minimal and specific ways possible. The ideal way to do so would be to use code generation to replace reflection, but this can really only be done on a project-by-project basis. The second best way is to have some code that scans your assemblies *at build time* and generates the most precise and specific pathways to the reflection targets as possible.
 
-**So that's what I did, and I call it <a href="https://github.com/thebeardphantom/Runtime-TypeCache" target="_blank">Runtime TypeCache</a>.**
+**So I made <a href="https://github.com/thebeardphantom/Runtime-TypeCache" target="_blank">Runtime TypeCache</a>.**
 
 Here's a demo for how it works:
 
