@@ -1,9 +1,9 @@
-const cacheName = "DefaultCompany-Ludoalbum-0.1.0";
+const cacheName = "TheBeardPhantom-Ludoalbum-0.1.0";
 const contentToCache = [
     "Build/Web.loader.js",
-    "Build/Web.framework.js",
-    "Build/Web.data",
-    "Build/Web.wasm",
+    "Build/Web.framework.js.br",
+    "Build/Web.data.br",
+    "Build/Web.wasm.br",
     "TemplateData/style.css"
 
 ];
