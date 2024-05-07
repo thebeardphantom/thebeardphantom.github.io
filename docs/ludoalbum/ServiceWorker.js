@@ -1,9 +1,9 @@
 const cacheName = "TheBeardPhantom-Ludoalbum-0.1.0";
 const contentToCache = [
     "Build/Web.loader.js",
-    "Build/Web.framework.js.br",
-    "Build/Web.data.br",
-    "Build/Web.wasm.br",
+    "Build/Web.framework.js.unityweb",
+    "Build/Web.data.unityweb",
+    "Build/Web.wasm.unityweb",
     "TemplateData/style.css"
 
 ];
